@@ -1,0 +1,1 @@
+I want to refactor the Contacts Manager that Lance Crowder and I worked on for the file IO exercise.
