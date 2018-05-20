@@ -70,7 +70,7 @@ public class ContactsManager {
                     if (menuSelection == 2) {
                     createContact();
 //                        Contact Jody = new Contact("Jody", "111-111-1111");
-                        contacts.put(3,createContact());
+                        contacts.put(contacts.size()+1,createContact());
                         System.out.println(("this message"));
 
                     }
@@ -88,7 +88,7 @@ public class ContactsManager {
     private static Contact createContact() {
 
         Input input = new Input();
-        String id;
+
         String name;
         String phoneNumber;
 
@@ -104,6 +104,7 @@ public class ContactsManager {
             Contact  newContact = new Contact(name,phoneNumber);
 
             System.out.println(name);
+
 
 
         return newContact;
