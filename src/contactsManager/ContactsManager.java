@@ -68,9 +68,9 @@ public class ContactsManager {
                 }
 
                     if (menuSelection == 2) {
-//                    createContact();
-                        Contact Jody = new Contact("Jody", "111-111-1111");
-                        contacts.put(3, Jody);
+                    createContact();
+//                        Contact Jody = new Contact("Jody", "111-111-1111");
+                        contacts.put(3,createContact());
                         System.out.println(("this message"));
 
                     }
@@ -89,11 +89,10 @@ public class ContactsManager {
 
         Input input = new Input();
         String id;
-        String name = "";
+        String name;
         String phoneNumber;
 
-            System.out.println("Please enter a name.");
-
+            name = input.getString("please enter a name");
             name = name.substring(0, 1).toUpperCase() + name.substring(1);
             phoneNumber = input.getString("Please enter a phone number for " + name + ".");
             if (phoneNumber.length() == 10) {
