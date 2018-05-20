@@ -1,4 +1,9 @@
 package contactsManager;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 import util.Input;
@@ -12,7 +17,12 @@ public class ContactsManager {
     public static void main(String[] args) {
 
         String userInput;
-
+        ArrayList<String> contactsMap = new ArrayList<>();
+        try {
+            writeListToFile(contactsMap,"data","contacts.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Current Contact List.\n");
         contactApp();
     }
@@ -55,6 +65,15 @@ public class ContactsManager {
                         contacts.put(contacts.size()+1,createContact(contacts));
 
                     }
+                    if(menuSelection == 3){
+                        try {
+                            searchByName(directory,filename);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } {
+
+                        };
+                    }
                     if (menuSelection == 5) {
                         System.exit(0);
                     }
@@ -81,5 +100,43 @@ public class ContactsManager {
             contacts.put(contacts.size()+1,newContact);
         return newContact;
     }
+
+    private static void searchByName(String directory, String filename) throws IOException {
+        ArrayList<String> list = createList(directory, filename);
+        Input input = new Input();
+        String userName;
+        userName = input.getString("Please enter a name to search.");
+        try {
+            for (int i = 0; i <= list.size(); i++) {
+                if (!userName.equalsIgnoreCase(list.get(i))) {
+                    continue;
+                }
+                if (userName.equalsIgnoreCase(list.get(i))) {
+                    System.out.println(list.get(i));
+                    System.out.println(list.get(i + 1));
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Info not found");
+            searchByName(directory, filename);
+        }
+    }
+
+    private static ArrayList<String> createList(String directory, String filename) {
+        ArrayList<String> list = new ArrayList<>();
+        return list;
+    }
+
+    private static void writeListToFile(ArrayList<String> contactsMap, String directory, String filename) throws IOException {
+        Path filepath = Paths.get(directory, filename);
+        Files.write(filepath, contactsMap, StandardOpenOption.APPEND);
+    }
+
+    private static void reWriteListToFile(ArrayList<String> contactsMap, String directory, String filename) throws IOException {
+        Path filepath = Paths.get(directory, filename);
+        Files.write(filepath, contactsMap);
+    }
+
 
 }
