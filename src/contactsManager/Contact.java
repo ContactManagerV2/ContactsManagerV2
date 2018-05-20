@@ -3,11 +3,12 @@ import java.util.ArrayList;
 
 public class Contact {
     private String name;
-    ArrayList<String> phoneNumber = new ArrayList<>();
+    private String phoneNumber;
 
 
-    public Contact(String name) {
+    public Contact(String name, String phoneNumber) {
         this.name = name;
+        this.phoneNumber = phoneNumber;
 
     }
 
@@ -16,8 +17,11 @@ public class Contact {
     }
 
     public void addPhoneNumber(String phoneNumber){
-//        phoneNumber.add(phoneNumber);
+
     }
 
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 }

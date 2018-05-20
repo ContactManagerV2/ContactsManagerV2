@@ -26,21 +26,22 @@ public class ContactsManager {
         Input input = new Input();
         String userInput;
 
-        Contact DevilDog = new Contact("Lance");
-        DevilDog.addPhoneNumber("222-111-4444");
+        Contact DevilDog = new Contact("Lance", "777-777-7777");
+//        DevilDog.addPhoneNumber("222-111-4444");
 
-        Contact Airborne = new Contact("Richard");
-        Airborne.addPhoneNumber("888-000-8888");
+        Contact Airborne = new Contact("Richard","888-888-8888");
+//        Airborne.addPhoneNumber("888-000-8888");
 
-        HashMap<String, Contact> contacts = new HashMap<>();
+        HashMap<Number, Contact> contacts = new HashMap<>();
 
-        contacts.put("JarHead", DevilDog);
-        contacts.put("Grunt", Airborne);
+        contacts.put(1, DevilDog);
+        contacts.put(2, Airborne);
 
         System.out.println("Current Contact List.\n");
         do {
-            for (Map.Entry<String, Contact> entry : contacts.entrySet()) {
-                System.out.println("ID: " + entry.getKey() + "  |   " + entry.getValue().getName());
+            for (Map.Entry<Number, Contact> entry : contacts.entrySet()) {
+                System.out.println("ID: " + entry.getKey() + "  |   " + entry.getValue().getName() + " |  "
+                + entry.getValue().getPhoneNumber());
             }
 
 
@@ -54,12 +55,46 @@ public class ContactsManager {
             menuSelection = input.getInt();
 
             if (menuSelection == 1) {
-                for (Map.Entry<String, Contact> entry : contacts.entrySet()) {
+                for (Map.Entry<Number, Contact> entry : contacts.entrySet()) {
                     System.out.println("ID: " + entry.getKey() + "  |   ");
                 }
+
+//                if(menuSelection == 2){
+//                    createContact();
+//
+//                }
             }
 
 
         } while ("y" == "y");
     }
-}
+
+//    private static void createContact() {
+//
+//        Input input = new Input();
+//        String id;
+//        String name;
+//        String phoneNumber;
+//        do {
+//            id = input.getString("Please enter a new ID");
+//
+//            name = name.substring(0,1).toUpperCase()+name.substring(1);
+//            phoneNumber = input.getString("Please enter a phone number for " + name + ".");
+//            if (phoneNumber.length() == 10) {
+//                phoneNumber = phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6);
+//            } else {
+//                System.out.println("Please Enter a 10 digit phone number");
+//                createContact();
+//            }
+//            map.put
+//            Contact id = new Contact(name,phoneNumber);
+//            System.out.println(name);
+//        } while (input.yesNo("Do you want to add another name and number"));
+//        try {
+//            writeListToFile(list, directory, filename);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return list;
+    }
+
