@@ -49,7 +49,7 @@ public class ContactsManager {
                 }
 
                     if (menuSelection == 2) {
-                    createContact(contacts);
+//                    createContact(contacts);
 
 //                      Contact Jody = new Contact("Jody", "111-111-1111");
                         contacts.put(contacts.size()+1,createContact(contacts));
