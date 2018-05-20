@@ -43,31 +43,33 @@ public class ContactsManager {
 
             Contact DevilDog = new Contact("Lance", "777-777-7777");
             Contact Airborne = new Contact("Richard", "888-888-8888");
-            Contact Jody = new Contact("Jody", "111-111-1111");
+
 
             contacts.put(1, DevilDog);
             contacts.put(2, Airborne);
-
             do {
                 for (Map.Entry<Number, Contact> entry : contacts.entrySet()) {
                     System.out.println("ID: " + entry.getKey() + "  |   " + entry.getValue().getName() + " |  "
                             + entry.getValue().getPhoneNumber());
-                }
 
-                System.out.println("Please select a menu option");
+                }
+                System.out.println("\nPlease select a menu option");
                 System.out.println("1. View contacts.\n" +
                         "2. Add a new contact.\n" +
                         "3. Search a contact by name.\n" +
                         "4. Delete an existing contact.\n" +
                         "5. Exit.\n" +
                         "Enter an option (1, 2, 3, 4 or 5):");
+
                 menuSelection = input.getInt();
 
                 if (menuSelection == 1) {
                     contactApp();
+                }
 
                     if (menuSelection == 2) {
 //                    createContact();
+                        Contact Jody = new Contact("Jody", "111-111-1111");
                         contacts.put(3, Jody);
                         System.out.println(("this message"));
 
@@ -75,7 +77,7 @@ public class ContactsManager {
                     if (menuSelection == 5) {
                         System.exit(0);
                     }
-                }
+
 
 
             } while ("y" == "y");
