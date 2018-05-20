@@ -48,12 +48,13 @@ public class ContactsManager {
             contacts.put(1, DevilDog);
             contacts.put(2, Airborne);
             do {
+                    System.out.println(" Name              | Phone Number");
+                    System.out.println("------------------------------------");
                 for (Map.Entry<Number, Contact> entry : contacts.entrySet()) {
-                    System.out.println("ID: " + entry.getKey() + "  |   " + entry.getValue().getName() + " |  "
-                            + entry.getValue().getPhoneNumber());
+                    System.out.printf("\n ID: %-2d %-9s  |  %-14s",entry.getKey(),entry.getValue().getName(), entry.getValue().getPhoneNumber());
 
                 }
-                System.out.println("\nPlease select a menu option");
+                System.out.println("\n\nPlease select a menu option");
                 System.out.println("1. View contacts.\n" +
                         "2. Add a new contact.\n" +
                         "3. Search a contact by name.\n" +
@@ -69,26 +70,20 @@ public class ContactsManager {
 
                     if (menuSelection == 2) {
                     createContact();
+
 //                        Contact Jody = new Contact("Jody", "111-111-1111");
                         contacts.put(contacts.size()+1,createContact());
-                        System.out.println(("this message"));
 
                     }
                     if (menuSelection == 5) {
                         System.exit(0);
                     }
-
-
-
             } while ("y" == "y");
         }
-
-
 
     private static Contact createContact() {
 
         Input input = new Input();
-
         String name;
         String phoneNumber;
 
@@ -102,11 +97,7 @@ public class ContactsManager {
                 createContact();
             }
             Contact  newContact = new Contact(name,phoneNumber);
-
-            System.out.println(name);
-
-
-
+            System.out.println(name + " " + phoneNumber);
         return newContact;
     }
 
