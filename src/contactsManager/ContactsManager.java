@@ -1,18 +1,7 @@
 package contactsManager;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.List;
-import util.Input;
-import util.FileIO;
+import java.util.*;
 
-import static util.FileIO.createFileIfNotExists;
+import util.Input;
 
 
 public class ContactsManager {
@@ -20,17 +9,9 @@ public class ContactsManager {
     private static String filename = "contacts.txt";
     static int selection;
 
-
     public static void main(String[] args) {
 
-
         String userInput;
-
-
-
-//        HashMap<Number, Contact> contacts = new HashMap<>();
-
-
 
         System.out.println("Current Contact List.\n");
         contactApp();
@@ -43,7 +24,6 @@ public class ContactsManager {
 
             Contact DevilDog = new Contact("Lance", "777-777-7777");
             Contact Airborne = new Contact("Richard", "888-888-8888");
-
 
             contacts.put(1, DevilDog);
             contacts.put(2, Airborne);
@@ -69,10 +49,10 @@ public class ContactsManager {
                 }
 
                     if (menuSelection == 2) {
-                    createContact();
+                    createContact(contacts);
 
-//                        Contact Jody = new Contact("Jody", "111-111-1111");
-                        contacts.put(contacts.size()+1,createContact());
+//                      Contact Jody = new Contact("Jody", "111-111-1111");
+                        contacts.put(contacts.size()+1,createContact(contacts));
 
                     }
                     if (menuSelection == 5) {
@@ -81,7 +61,7 @@ public class ContactsManager {
             } while ("y" == "y");
         }
 
-    private static Contact createContact() {
+    private static Contact createContact(HashMap<Number, Contact> contacts) {
 
         Input input = new Input();
         String name;
@@ -94,10 +74,11 @@ public class ContactsManager {
                 phoneNumber = phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6);
             } else {
                 System.out.println("Please Enter a 10 digit phone number");
-                createContact();
+                createContact(contacts);
             }
             Contact  newContact = new Contact(name,phoneNumber);
             System.out.println(name + " " + phoneNumber);
+            contacts.put(contacts.size()+1,newContact);
         return newContact;
     }
 
