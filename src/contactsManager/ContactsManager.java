@@ -22,79 +22,90 @@ public class ContactsManager {
 
 
     public static void main(String[] args) {
-        int menuSelection;
-        Input input = new Input();
+
+
         String userInput;
 
-        Contact DevilDog = new Contact("Lance", "777-777-7777");
-//        DevilDog.addPhoneNumber("222-111-4444");
 
-        Contact Airborne = new Contact("Richard","888-888-8888");
-//        Airborne.addPhoneNumber("888-000-8888");
 
-        HashMap<Number, Contact> contacts = new HashMap<>();
+//        HashMap<Number, Contact> contacts = new HashMap<>();
 
-        contacts.put(1, DevilDog);
-        contacts.put(2, Airborne);
+
 
         System.out.println("Current Contact List.\n");
-        do {
-            for (Map.Entry<Number, Contact> entry : contacts.entrySet()) {
-                System.out.println("ID: " + entry.getKey() + "  |   " + entry.getValue().getName() + " |  "
-                + entry.getValue().getPhoneNumber());
-            }
+        contactApp();
+    }
 
+        public static void contactApp () {
+            Input input = new Input();
+            int menuSelection;
+            HashMap<Number, Contact> contacts = new HashMap<>();
 
-            System.out.println("Please select a menu option");
-            System.out.println("1. View contacts.\n" +
-                    "2. Add a new contact.\n" +
-                    "3. Search a contact by name.\n" +
-                    "4. Delete an existing contact.\n" +
-                    "5. Exit.\n" +
-                    "Enter an option (1, 2, 3, 4 or 5):");
-            menuSelection = input.getInt();
+            Contact DevilDog = new Contact("Lance", "777-777-7777");
+            Contact Airborne = new Contact("Richard", "888-888-8888");
+            Contact Jody = new Contact("Jody", "111-111-1111");
 
-            if (menuSelection == 1) {
+            contacts.put(1, DevilDog);
+            contacts.put(2, Airborne);
+
+            do {
                 for (Map.Entry<Number, Contact> entry : contacts.entrySet()) {
-                    System.out.println("ID: " + entry.getKey() + "  |   ");
+                    System.out.println("ID: " + entry.getKey() + "  |   " + entry.getValue().getName() + " |  "
+                            + entry.getValue().getPhoneNumber());
                 }
 
-//                if(menuSelection == 2){
+                System.out.println("Please select a menu option");
+                System.out.println("1. View contacts.\n" +
+                        "2. Add a new contact.\n" +
+                        "3. Search a contact by name.\n" +
+                        "4. Delete an existing contact.\n" +
+                        "5. Exit.\n" +
+                        "Enter an option (1, 2, 3, 4 or 5):");
+                menuSelection = input.getInt();
+
+                if (menuSelection == 1) {
+                    contactApp();
+
+                    if (menuSelection == 2) {
 //                    createContact();
-//
-//                }
+                        contacts.put(3, Jody);
+                        System.out.println(("this message"));
+
+                    }
+                    if (menuSelection == 5) {
+                        System.exit(0);
+                    }
+                }
+
+
+            } while ("y" == "y");
+        }
+
+
+
+    private static Contact createContact() {
+
+        Input input = new Input();
+        String id;
+        String name = "";
+        String phoneNumber;
+
+            System.out.println("Please enter a name.");
+
+            name = name.substring(0, 1).toUpperCase() + name.substring(1);
+            phoneNumber = input.getString("Please enter a phone number for " + name + ".");
+            if (phoneNumber.length() == 10) {
+                phoneNumber = phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6);
+            } else {
+                System.out.println("Please Enter a 10 digit phone number");
+                createContact();
             }
+            Contact  newContact = new Contact(name,phoneNumber);
+
+            System.out.println(name);
 
 
-        } while ("y" == "y");
+        return newContact;
     }
 
-//    private static void createContact() {
-//
-//        Input input = new Input();
-//        String id;
-//        String name;
-//        String phoneNumber;
-//        do {
-//            id = input.getString("Please enter a new ID");
-//
-//            name = name.substring(0,1).toUpperCase()+name.substring(1);
-//            phoneNumber = input.getString("Please enter a phone number for " + name + ".");
-//            if (phoneNumber.length() == 10) {
-//                phoneNumber = phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6);
-//            } else {
-//                System.out.println("Please Enter a 10 digit phone number");
-//                createContact();
-//            }
-//            map.put
-//            Contact id = new Contact(name,phoneNumber);
-//            System.out.println(name);
-//        } while (input.yesNo("Do you want to add another name and number"));
-//        try {
-//            writeListToFile(list, directory, filename);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-    }
-
+}
