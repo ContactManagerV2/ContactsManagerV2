@@ -1,15 +1,23 @@
 package contactsManager;
+import java.util.ArrayList;
 
 public class Contact {
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String emailAddress;
+    private String name;
+    ArrayList<String> phoneNumber = new ArrayList<>();
 
-    public Contact(String firstName, String lastName, String phoneNumber, String emailAddress) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.emailAddress = emailAddress;
+
+    public Contact(String name) {
+        this.name = name;
+
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void addPhoneNumber(String phoneNumber){
+//        phoneNumber.add(phoneNumber);
+    }
+
+
 }

@@ -43,4 +43,20 @@ import java.util.List;
 
 
 
+        public static ArrayList<String> makeList() {
+            ArrayList<String> list = new ArrayList<>();
+            Input input = new Input();
+            String item;
+
+            do {
+                item = input.getString("Please input the item you want to add to the list.");
+                list.add(item);
+
+            } while(input.yesNo("Do you want to add another item to the list? Press y or Yes to continue"));
+
+            return list;
+        }
+
+
+
 }
